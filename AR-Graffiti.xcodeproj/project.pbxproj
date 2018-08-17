@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21B019BA764F42410FD92EC4 /* Pods_AR_Graffiti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67869EEB9DAE24B70B57A30C /* Pods_AR_Graffiti.framework */; };
 		7014E2E91F5763D0004DECB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E2E81F5763D0004DECB8 /* AppDelegate.swift */; };
 		7014E2EB1F5763D0004DECB8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 7014E2EA1F5763D0004DECB8 /* art.scnassets */; };
 		7014E2ED1F5763D0004DECB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E2EC1F5763D0004DECB8 /* ViewController.swift */; };
@@ -26,20 +25,21 @@
 		C136CBDB2118DB43000102D6 /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = C136CBDA2118DB43000102D6 /* smoke.png */; };
 		C16B1BCD21232E52000AD933 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16B1BCC21232E52000AD933 /* CollectionViewCell.swift */; };
 		C1A6691521270EFC007214D1 /* shakeit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1A6691421270EFC007214D1 /* shakeit.mp3 */; };
+		C1A6693321274FF3007214D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6693221274FF2007214D1 /* Foundation.framework */; };
+		C1A6693521274FFA007214D1 /* DCAnimationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6693421274FFA007214D1 /* DCAnimationKit.framework */; };
+		C1A6693721274FFA007214D1 /* Pods_AR_Graffiti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6693621274FFA007214D1 /* Pods_AR_Graffiti.framework */; };
+		C1A6693921274FFA007214D1 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6693821274FFA007214D1 /* Spring.framework */; };
+		C1A6693B21274FFA007214D1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6693A21274FFA007214D1 /* SwiftyJSON.framework */; };
 		C1DAE1EC21208F2400B30CE3 /* Font (el&font bubble).ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */; };
 		C1DAE1EE21208F2A00B30CE3 /* Street Writers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */; };
 		C1DAE1EF21208F3D00B30CE3 /* Street Writers.ttf in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */; };
 		C1DAE1F021208F4700B30CE3 /* Font (el&font bubble).ttf in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */; };
-		C1E465B02125D333005ADC56 /* DCAnimationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465AF2125D333005ADC56 /* DCAnimationKit.framework */; };
-		C1E465B22125D362005ADC56 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B12125D362005ADC56 /* SwiftyJSON.framework */; };
-		C1E465B42125D367005ADC56 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B32125D367005ADC56 /* Spring.framework */; };
 		C1E465B92125E381005ADC56 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B82125E380005ADC56 /* AVFoundation.framework */; };
 		C1E465BD21261EE6005ADC56 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		157FF6C15816C0165214D353 /* Pods-AR-Graffiti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Graffiti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti.debug.xcconfig"; sourceTree = "<group>"; };
-		67869EEB9DAE24B70B57A30C /* Pods_AR_Graffiti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Graffiti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7014E2E51F5763D0004DECB8 /* AR-Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-Graffiti.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7014E2E81F5763D0004DECB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7014E2EA1F5763D0004DECB8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -60,11 +60,13 @@
 		C136CBDA2118DB43000102D6 /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
 		C16B1BCC21232E52000AD933 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C1A6691421270EFC007214D1 /* shakeit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shakeit.mp3; sourceTree = "<group>"; };
+		C1A6693221274FF2007214D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C1A6693421274FFA007214D1 /* DCAnimationKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DCAnimationKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1A6693621274FFA007214D1 /* Pods_AR_Graffiti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_AR_Graffiti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1A6693821274FFA007214D1 /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1A6693A21274FFA007214D1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font (el&font bubble).ttf"; sourceTree = "<group>"; };
 		C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Street Writers.ttf"; sourceTree = "<group>"; };
-		C1E465AF2125D333005ADC56 /* DCAnimationKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DCAnimationKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1E465B12125D362005ADC56 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1E465B32125D367005ADC56 /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1E465B82125E380005ADC56 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C4477117459DEE61E1AC27EC /* Pods-AR-Graffiti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Graffiti.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,12 +77,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1A6693521274FFA007214D1 /* DCAnimationKit.framework in Frameworks */,
+				C1A6693721274FFA007214D1 /* Pods_AR_Graffiti.framework in Frameworks */,
+				C1A6693921274FFA007214D1 /* Spring.framework in Frameworks */,
+				C1A6693B21274FFA007214D1 /* SwiftyJSON.framework in Frameworks */,
+				C1A6693321274FF3007214D1 /* Foundation.framework in Frameworks */,
 				C1E465BD21261EE6005ADC56 /* AudioToolbox.framework in Frameworks */,
 				C1E465B92125E381005ADC56 /* AVFoundation.framework in Frameworks */,
-				C1E465B42125D367005ADC56 /* Spring.framework in Frameworks */,
-				C1E465B22125D362005ADC56 /* SwiftyJSON.framework in Frameworks */,
-				C1E465B02125D333005ADC56 /* DCAnimationKit.framework in Frameworks */,
-				21B019BA764F42410FD92EC4 /* Pods_AR_Graffiti.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,12 +172,13 @@
 		B3EF2438ED31E32D48317B1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1A6693421274FFA007214D1 /* DCAnimationKit.framework */,
+				C1A6693621274FFA007214D1 /* Pods_AR_Graffiti.framework */,
+				C1A6693821274FFA007214D1 /* Spring.framework */,
+				C1A6693A21274FFA007214D1 /* SwiftyJSON.framework */,
+				C1A6693221274FF2007214D1 /* Foundation.framework */,
 				C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */,
 				C1E465B82125E380005ADC56 /* AVFoundation.framework */,
-				C1E465B32125D367005ADC56 /* Spring.framework */,
-				C1E465B12125D362005ADC56 /* SwiftyJSON.framework */,
-				C1E465AF2125D333005ADC56 /* DCAnimationKit.framework */,
-				67869EEB9DAE24B70B57A30C /* Pods_AR_Graffiti.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

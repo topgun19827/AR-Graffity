@@ -25,26 +25,44 @@ class BrushFactory {
     
     static func brushSizeForDistance(distance: CGFloat) -> CGSize {
         if distance < MIN_DISTANCE_SCALE {
-            print("distance", distance)
+
             return CGSize(width: BASE_SIZE.width * MIN_SCALE,
                           height: BASE_SIZE.height * MIN_SCALE)
-            
+
+        }
+
+        if distance > MAX_DISTANCE_SCALE {
+
+            return CGSize(width: BASE_SIZE.width * MAX_SCALE,
+                          height: BASE_SIZE.height * MAX_SCALE)
+
+        }
+
+        let ratio = (distance - MIN_DISTANCE_SCALE) / (MAX_DISTANCE_SCALE - MIN_DISTANCE_SCALE)
+        let scale = ratio * (MAX_SCALE - MIN_SCALE) + MIN_SCALE
+
+
+
+        return CGSize(width: BASE_SIZE.width * scale,
+                      height: BASE_SIZE.height * scale)
+    }
+    
+    static func graffitiSize(distance: CGFloat) -> CGFloat {
+        if distance < MIN_DISTANCE_SCALE {
+            print("distance", distance)
+            return CGFloat(BASE_SIZE.width * MIN_SCALE)
         }
         
         if distance > MAX_DISTANCE_SCALE {
             print("distance", distance)
-            return CGSize(width: BASE_SIZE.width * MAX_SCALE,
-                          height: BASE_SIZE.height * MAX_SCALE)
-            
+            return CGFloat(BASE_SIZE.width * MAX_SCALE)
         }
         
         let ratio = (distance - MIN_DISTANCE_SCALE) / (MAX_DISTANCE_SCALE - MIN_DISTANCE_SCALE)
         let scale = ratio * (MAX_SCALE - MIN_SCALE) + MIN_SCALE
         print("distance", distance)
         
-        
-        return CGSize(width: BASE_SIZE.width * scale,
-                      height: BASE_SIZE.height * scale)
+        return CGFloat(BASE_SIZE.width * scale)
     }
     
     func brushNode(color:UIColor, size:CGSize) -> SKSpriteNode {

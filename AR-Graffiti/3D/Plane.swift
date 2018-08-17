@@ -12,7 +12,7 @@ import SpriteKit
 import ARKit
 import UIKit
 
-let WALL_TEXT_SIZE_MULP:CGFloat = 1000
+let WALL_TEXT_SIZE_MULP:CGFloat = 500
 class Plane: SCNNode {
     
     var anchor: ARPlaneAnchor!
@@ -30,8 +30,8 @@ class Plane: SCNNode {
         self.anchor = anchor
         planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         
-        print("anchor.x",anchor.extent.x)
-        print("anchor.z",anchor.extent.z)
+//        print("anchor.x",anchor.extent.x)
+//        print("anchor.z",anchor.extent.z)
         
         
         let mat = SCNMaterial()
@@ -41,8 +41,8 @@ class Plane: SCNNode {
         scene.size = CGSize(width: planeGeometry.width * WALL_TEXT_SIZE_MULP,
                             height: planeGeometry.height * WALL_TEXT_SIZE_MULP)
         
-        print("scene.w",scene.size.width)
-        print("scene.h",scene.size.height)
+//        print("scene.w",scene.size.width)
+//        print("scene.h",scene.size.height)
         
         mat.diffuse.contents = scene
         mat.writesToDepthBuffer = true
@@ -73,6 +73,14 @@ class Plane: SCNNode {
         // plane 刚创建时中心点 center 为 0,0,0，node transform 包含了变换参数。
         // plane 更新后变换没变但 center 更新了，所以需要更新 3D 几何体的位置
         position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
+        
+//        let scene = planeGeometry?.firstMaterial?.diffuse.contents as? SKScene
+//        scene?.backgroundColor = colorboard[colorNumber]
+//        scene?.size = CGSize(width: planeGeometry.width * WALL_TEXT_SIZE_MULP,
+//                            height: planeGeometry.height * WALL_TEXT_SIZE_MULP)
+        
+        
+        
         let mat = SCNMaterial()
         // we use a spritekit scene so we can draw decals on it..
         let scene = SKScene()
@@ -80,8 +88,8 @@ class Plane: SCNNode {
         scene.size = CGSize(width: planeGeometry.width * WALL_TEXT_SIZE_MULP,
                             height: planeGeometry.height * WALL_TEXT_SIZE_MULP)
         
-        print("scene.w",scene.size.width)
-        print("scene.h",scene.size.height)
+//        print("scene.w",scene.size.width)
+//        print("scene.h",scene.size.height)
         
         mat.diffuse.contents = scene
         mat.writesToDepthBuffer = true

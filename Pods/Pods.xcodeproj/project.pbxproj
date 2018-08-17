@@ -38,7 +38,7 @@
 		B0E68085EFEF63980E61394D5ED4CBF9 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7105A605BD7C840AD759335E07E3FE1 /* SpringLabel.swift */; };
 		B15BF59F30F290606017E39A79D64F24 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E47AB95EE2CEFB21E2173B350460253 /* SwiftyJSON-dummy.m */; };
 		BA45F46704F2353821DA811B665B0654 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CF6DBD1FB5DC56989476682609AB99 /* DesignableTabBarController.swift */; };
-		C1E465B62125D694005ADC56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B52125D693005ADC56 /* Foundation.framework */; };
+		C1A6693121274FC3007214D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A6692021274ED9007214D1 /* Foundation.framework */; };
 		C24514A07D477CB09530C3E16CF3F9D1 /* DCAnimationKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8389C3D190F5D1F097DF3D736B5413B0 /* DCAnimationKit-dummy.m */; };
 		CD287FAE6EAC7C2F875549878A277A9F /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAC8BF0F78DFF7C41A6EBDBF58B6269 /* SpringTextField.swift */; };
 		CD52BAF7338BB742D4E8EB28A8F9DD8F /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB60F5CF1E2AE641B0C85ACF968ABB96 /* KeyboardLayoutConstraint.swift */; };
@@ -129,8 +129,8 @@
 		BB5EAE9952AF1D3FCE4E597E2AC3E6FF /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		BBC7813252AAFD120528D0B989E40581 /* Misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Misc.swift; path = Spring/Misc.swift; sourceTree = "<group>"; };
 		BD0B7945AFBCBE5B38A2621B33146F20 /* TransitionZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionZoom.swift; path = Spring/TransitionZoom.swift; sourceTree = "<group>"; };
-		C1E465B52125D693005ADC56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C1E465B72125D6F1005ADC56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C1A6691E21274ED1007214D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C1A6692021274ED9007214D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C28EA97A65104CF604F39B0C26AD6744 /* Spring.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Spring.xcconfig; sourceTree = "<group>"; };
 		C6B46D0A0EE50508062EA73FA403AE9F /* DesignableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableLabel.swift; path = Spring/DesignableLabel.swift; sourceTree = "<group>"; };
 		CD532551ED1D45D83ABB61ED85FDB345 /* SpringAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringAnimation.swift; path = Spring/SpringAnimation.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1E465B62125D694005ADC56 /* Foundation.framework in Frameworks */,
+				C1A6693121274FC3007214D1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +269,7 @@
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C1E465B72125D6F1005ADC56 /* Foundation.framework */,
+				C1A6692021274ED9007214D1 /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C1E465B52125D693005ADC56 /* Foundation.framework */,
+				C1A6691E21274ED1007214D1 /* Foundation.framework */,
 				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
@@ -770,13 +770,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2102BE8E1818BD6EBEBC599065C3690 /* DCAnimationKit.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

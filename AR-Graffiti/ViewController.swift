@@ -17,11 +17,13 @@ import AudioToolbox
 class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var planes = [UUID:Plane]() // 字典，存储场景中当前渲染的所有平面
+//    var points : [CGPoint] = [CGPoint]()
     var selectedButtonName : String = ""
     var pressButton : Int = 0
     let buttonArrray = ["wall", "spray", "tag", "camera", "delete"]
     var lastButtonName : String = "none"
     var currentStateDisplayed:String? = nil
+//    var lineNumber : Int = 0
     
     var index : Int = 0
     var wallitems = ["0","1","2","3","4","5","6"]
@@ -32,6 +34,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     var colorNumber : Int = 1
     var wallupdated : Bool = true
     var isspray : Bool = false
+    var touchbegan : Bool = false
     var spraySound : AVAudioPlayer!
     var shakeit : AVAudioPlayer!
     
@@ -170,7 +173,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.subtable.center.y -= 50}, completion: nil)
             sender.bounce(nil)
-            choosen(selectedButton: selectedButtonName)
             lastButtonName = selectedButtonName
         case 1:
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {self.subtable.center.y += 50}, completion: nil)
@@ -208,14 +210,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         print(indexPath.item)
     }
 
-    func choosen(selectedButton : String){
-        if selectedButton == "wall"{
-            print(subtable.numberOfSections)
-            print(subtable.numberOfItems(inSection: 0))
-           
-            
-        }
-    }
     
     private func anyPlaneFrom(location:CGPoint, usingExtent:Bool = true) -> (SCNNode, SCNVector3, ARPlaneAnchor)? {
         let results = sceneView.hitTest(location,
@@ -241,13 +235,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
               let trackingTouch = trackingTouch,
               let povPosition = sceneView.pointOfView?.position else { return }
         lastPaint = now
-        
+
         let location = trackingTouch.location(in: view)
         let results = sceneView.hitTest(location, options: [
             SCNHitTestOption.categoryBitMask: NodeCategory.wallNode.rawValue,
             SCNHitTestOption.firstFoundOnly: true
             ])
-        
+
         // find "target" position..
         guard let wallNode = results.first?.node,
               let localCoordinates = results.first?.localCoordinates,
@@ -255,48 +249,117 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
               let scene = wallNode.geometry?.firstMaterial?.diffuse.contents as? SKScene else {
                 return
         }
-        
-        print("woallNode", wallNode.worldPosition)
-        
-        
+
+//        print("woallNode", wallNode.worldPosition)
+
+
         let distance = povPosition.distance(vector: worldCoordinates)
-        
+
         // this calculation works, however it is entirely specific to this particular geometry (scnplane) and the
         // coordinate system of the skscene.. also who knows, may not work in all cases :D
         let skPosition = CGPoint(x: CGFloat(localCoordinates.x) * WALL_TEXT_SIZE_MULP + scene.size.width * 0.5,
                                  y: -CGFloat(localCoordinates.y) * WALL_TEXT_SIZE_MULP + scene.size.height * 0.5)
-        
+
         let scnSize = BrushFactory.brushSizeForDistance(distance: CGFloat(distance))
-        
+
         let skSize = CGSize(width: scnSize.width * WALL_TEXT_SIZE_MULP,
                             height: scnSize.height * WALL_TEXT_SIZE_MULP)
-        
+
         let color = colorboard[sprayNumber]
         let decalNode = BrushFactory.shared.brushNode(color: color,
                                                       size: skSize)
-        
+
+
         guard let currentFrame = self.sceneView.session.currentFrame else {
             return
         }
         var translation = matrix_identity_float4x4
         translation.columns.3.z = -0.2
-        
+
         //add spary annimation
         if distance < 0.5 {
+            self.sceneView.scene.rootNode.enumerateChildNodes({(node, _) in
+                if node.name == "pointer"{
+                    node.removeFromParentNode()
+                }
+            })
             let sprayNode = SCNNode()
             sprayNode.name = "pointer"
             sprayNode.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
-            sprayNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-            sprayNode.physicsBody?.isAffectedByGravity = false
+//            sprayNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+//            sprayNode.physicsBody?.isAffectedByGravity = false
             let spray = SCNParticleSystem(named: "Spray.scnp", inDirectory: nil)
             spray?.particleColor = colorboard[sprayNumber]
             sprayNode.addParticleSystem(spray!)
             self.sceneView.scene.rootNode.addChildNode(sprayNode)
         }
-        
+
         decalNode.position = skPosition
         scene.addChild(decalNode)
     }
+
+//    drawing lines that can't change linewith realtime
+//    func grattifi(){
+//        isspray = true
+//        var colorboard : [UIColor] = [clear,black,white,orange,green,blue,red]
+//        let now = Date()
+//        guard lastPaint + 1.0/20.0 < now,
+//            let trackingTouch = trackingTouch,
+//            let povPosition = sceneView.pointOfView?.position else { return }
+//        lastPaint = now
+//
+//        let location = trackingTouch.location(in: view)
+//        let results = sceneView.hitTest(location, options: [
+//            SCNHitTestOption.categoryBitMask: NodeCategory.wallNode.rawValue,
+//            SCNHitTestOption.firstFoundOnly: true
+//            ])
+//
+//        // find "target" position..
+//        guard let wallNode = results.first?.node,
+//            let localCoordinates = results.first?.localCoordinates,
+//            let worldCoordinates = results.first?.worldCoordinates,
+//            let scene = wallNode.geometry?.firstMaterial?.diffuse.contents as? SKScene else {
+//                return
+//        }
+//
+//        print("woallNode", wallNode.worldPosition)
+//
+//
+//        let distance = povPosition.distance(vector: worldCoordinates)
+//
+//        // this calculation works, however it is entirely specific to this particular geometry (scnplane) and the
+//        // coordinate system of the skscene.. also who knows, may not work in all cases :D
+//        let skPosition = CGPoint(x: CGFloat(localCoordinates.x) * WALL_TEXT_SIZE_MULP + scene.size.width * 0.5,
+//                                 y: -CGFloat(localCoordinates.y) * WALL_TEXT_SIZE_MULP + scene.size.height * 0.5)
+//
+//        let color = colorboard[sprayNumber]
+//
+//        if touchbegan == true{
+//            points = [skPosition]
+//        }else{
+//            points.append(skPosition)
+//        }
+//
+//        var line : String = "line"
+//        line = "line" + String(lineNumber)
+//        scene.enumerateChildNodes(withName: line, using: {node, stop in
+//            node.removeFromParent()
+//        })
+//        let splineShapeNode = SKShapeNode(splinePoints: &points,
+//                                          count: points.count)
+////        splineShapeNode.strokeTexture = SKTexture(imageNamed: "test")
+//        splineShapeNode.lineWidth = BrushFactory.graffitiSize(distance: CGFloat(distance))
+//        print(splineShapeNode.lineWidth)
+//        splineShapeNode.strokeColor = color
+//        splineShapeNode.name = "line" + String(lineNumber)
+//        scene.addChild(splineShapeNode)
+//    }
+    
+    
+    
+    
+    
+    
     
 
     
@@ -310,8 +373,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        trackingTouch=touches.first
-        print(isspray)
+        trackingTouch = touches.first
+//        let point = trackingTouch?.location(in: view)
+//        points.append(point!)
+        touchbegan = true
         
         let path = Bundle.main.path(forResource: "spraySound.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
@@ -326,14 +391,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         }
         
     }
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let touch = touches.first
+//        let point = touch?.location(in: view)
+////        points.append(point!)
+////        print(point)
+//        touchbegan = false
+//
+//    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         guard let trackingTouch = trackingTouch,
             touches.contains(trackingTouch) else { return }
         self.trackingTouch = nil
         isspray = false
-        print(isspray)
         spraySound.stop()
+//        lineNumber = lineNumber + 1
     }
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
@@ -343,7 +416,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     }
     
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        print("shake")
         let path = Bundle.main.path(forResource: "shakeit.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
@@ -357,7 +429,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         }
     }
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        print("end")
         shakeit.stop()
     }
 
@@ -366,7 +437,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-         paint()
+//         grattifi()
+        paint()
         
     }
     
@@ -393,7 +465,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         guard let plane = planes[anchor.identifier] else {
             return
         }
-         print(anchor.identifier)
         // anchor 更新后也需要更新 3D 几何体。例如平面检测的高度和宽度可能会改变，所以需要更新 SceneKit 几何体以匹配
         if wallupdated{
         plane.update(anchor: anchor as! ARPlaneAnchor, colorNumber: colorNumber)

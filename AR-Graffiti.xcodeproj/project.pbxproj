@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21B019BA764F42410FD92EC4 /* Pods_AR_Graffiti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67869EEB9DAE24B70B57A30C /* Pods_AR_Graffiti.framework */; };
+		7014E2E91F5763D0004DECB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E2E81F5763D0004DECB8 /* AppDelegate.swift */; };
+		7014E2EB1F5763D0004DECB8 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 7014E2EA1F5763D0004DECB8 /* art.scnassets */; };
+		7014E2ED1F5763D0004DECB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E2EC1F5763D0004DECB8 /* ViewController.swift */; };
+		7014E2F01F5763D0004DECB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7014E2EE1F5763D0004DECB8 /* Main.storyboard */; };
+		7014E2F21F5763D0004DECB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7014E2F11F5763D0004DECB8 /* Assets.xcassets */; };
+		7014E2F51F5763D0004DECB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7014E2F31F5763D0004DECB8 /* LaunchScreen.storyboard */; };
+		7014E2FE1F57644C004DECB8 /* BrushFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E2FD1F57644C004DECB8 /* BrushFactory.swift */; };
+		7014E30A1F5765D0004DECB8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3091F5765D0004DECB8 /* Extension.swift */; };
+		7014E30F1F576665004DECB8 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3061F576586004DECB8 /* Plane.swift */; };
+		7014E3101F576668004DECB8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3081F5765A9004DECB8 /* AppState.swift */; };
+		7014E3131F576800004DECB8 /* NodeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3121F576800004DECB8 /* NodeCategory.swift */; };
+		C11A6D6F21263388005A959D /* spraySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C11A6D6E21263387005A959D /* spraySound.mp3 */; };
+		C126282B2120B4F400FD11F8 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C126282A2120B4F400FD11F8 /* MapController.swift */; };
+		C12AF9B7212103AA00C97E4F /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = C12AF9B6212103AA00C97E4F /* style.json */; };
+		C136CBD92118DB24000102D6 /* Spray.scnp in Resources */ = {isa = PBXBuildFile; fileRef = C136CBD82118DB24000102D6 /* Spray.scnp */; };
+		C136CBDB2118DB43000102D6 /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = C136CBDA2118DB43000102D6 /* smoke.png */; };
+		C16B1BCD21232E52000AD933 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16B1BCC21232E52000AD933 /* CollectionViewCell.swift */; };
+		C1A6691521270EFC007214D1 /* shakeit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1A6691421270EFC007214D1 /* shakeit.mp3 */; };
+		C1DAE1EC21208F2400B30CE3 /* Font (el&font bubble).ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */; };
+		C1DAE1EE21208F2A00B30CE3 /* Street Writers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */; };
+		C1DAE1EF21208F3D00B30CE3 /* Street Writers.ttf in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */; };
+		C1DAE1F021208F4700B30CE3 /* Font (el&font bubble).ttf in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */; };
+		C1E465B02125D333005ADC56 /* DCAnimationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465AF2125D333005ADC56 /* DCAnimationKit.framework */; };
+		C1E465B22125D362005ADC56 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B12125D362005ADC56 /* SwiftyJSON.framework */; };
+		C1E465B42125D367005ADC56 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B32125D367005ADC56 /* Spring.framework */; };
+		C1E465B92125E381005ADC56 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B82125E380005ADC56 /* AVFoundation.framework */; };
+		C1E465BD21261EE6005ADC56 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		157FF6C15816C0165214D353 /* Pods-AR-Graffiti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Graffiti.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti.debug.xcconfig"; sourceTree = "<group>"; };
+		67869EEB9DAE24B70B57A30C /* Pods_AR_Graffiti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Graffiti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7014E2E51F5763D0004DECB8 /* AR-Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-Graffiti.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7014E2E81F5763D0004DECB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7014E2EA1F5763D0004DECB8 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		7014E2EC1F5763D0004DECB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7014E2EF1F5763D0004DECB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7014E2F11F5763D0004DECB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7014E2F41F5763D0004DECB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7014E2F61F5763D0004DECB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7014E2FD1F57644C004DECB8 /* BrushFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushFactory.swift; sourceTree = "<group>"; };
+		7014E3061F576586004DECB8 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		7014E3081F5765A9004DECB8 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		7014E3091F5765D0004DECB8 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7014E3121F576800004DECB8 /* NodeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCategory.swift; sourceTree = "<group>"; };
+		C11A6D6E21263387005A959D /* spraySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = spraySound.mp3; path = "../../../Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/spraySound.mp3"; sourceTree = "<group>"; };
+		C126282A2120B4F400FD11F8 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		C12AF9B6212103AA00C97E4F /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = SOURCE_ROOT; };
+		C136CBD82118DB24000102D6 /* Spray.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Spray.scnp; sourceTree = "<group>"; };
+		C136CBDA2118DB43000102D6 /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke.png; sourceTree = "<group>"; };
+		C16B1BCC21232E52000AD933 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C1A6691421270EFC007214D1 /* shakeit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shakeit.mp3; sourceTree = "<group>"; };
+		C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font (el&font bubble).ttf"; sourceTree = "<group>"; };
+		C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Street Writers.ttf"; sourceTree = "<group>"; };
+		C1E465AF2125D333005ADC56 /* DCAnimationKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DCAnimationKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1E465B12125D362005ADC56 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1E465B32125D367005ADC56 /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1E465B82125E380005ADC56 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C4477117459DEE61E1AC27EC /* Pods-AR-Graffiti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Graffiti.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7014E2E21F5763D0004DECB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1E465BD21261EE6005ADC56 /* AudioToolbox.framework in Frameworks */,
+				C1E465B92125E381005ADC56 /* AVFoundation.framework in Frameworks */,
+				C1E465B42125D367005ADC56 /* Spring.framework in Frameworks */,
+				C1E465B22125D362005ADC56 /* SwiftyJSON.framework in Frameworks */,
+				C1E465B02125D333005ADC56 /* DCAnimationKit.framework in Frameworks */,
+				21B019BA764F42410FD92EC4 /* Pods_AR_Graffiti.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01DF70DE41381DBAC0CBB770 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				157FF6C15816C0165214D353 /* Pods-AR-Graffiti.debug.xcconfig */,
+				C4477117459DEE61E1AC27EC /* Pods-AR-Graffiti.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7014E2DC1F5763CF004DECB8 = {
+			isa = PBXGroup;
+			children = (
+				7014E2E71F5763D0004DECB8 /* AR-Graffiti */,
+				C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */,
+				C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */,
+				7014E2E61F5763D0004DECB8 /* Products */,
+				01DF70DE41381DBAC0CBB770 /* Pods */,
+				B3EF2438ED31E32D48317B1A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7014E2E61F5763D0004DECB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7014E2E51F5763D0004DECB8 /* AR-Graffiti.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7014E2E71F5763D0004DECB8 /* AR-Graffiti */ = {
+			isa = PBXGroup;
+			children = (
+				7014E3091F5765D0004DECB8 /* Extension.swift */,
+				7014E3001F576560004DECB8 /* 3D */,
+				7014E2FF1F57655B004DECB8 /* Model */,
+				7014E2FC1F576440004DECB8 /* Decal */,
+				7014E2E81F5763D0004DECB8 /* AppDelegate.swift */,
+				7014E2EA1F5763D0004DECB8 /* art.scnassets */,
+				7014E2EC1F5763D0004DECB8 /* ViewController.swift */,
+				C16B1BCC21232E52000AD933 /* CollectionViewCell.swift */,
+				C126282A2120B4F400FD11F8 /* MapController.swift */,
+				C136CBD82118DB24000102D6 /* Spray.scnp */,
+				C136CBDA2118DB43000102D6 /* smoke.png */,
+				C1A6691421270EFC007214D1 /* shakeit.mp3 */,
+				C11A6D6E21263387005A959D /* spraySound.mp3 */,
+				7014E2EE1F5763D0004DECB8 /* Main.storyboard */,
+				7014E2F11F5763D0004DECB8 /* Assets.xcassets */,
+				7014E2F31F5763D0004DECB8 /* LaunchScreen.storyboard */,
+				7014E2F61F5763D0004DECB8 /* Info.plist */,
+				C12AF9B6212103AA00C97E4F /* style.json */,
+			);
+			path = "AR-Graffiti";
+			sourceTree = "<group>";
+		};
+		7014E2FC1F576440004DECB8 /* Decal */ = {
+			isa = PBXGroup;
+			children = (
+				7014E2FD1F57644C004DECB8 /* BrushFactory.swift */,
+			);
+			path = Decal;
+			sourceTree = "<group>";
+		};
+		7014E2FF1F57655B004DECB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7014E3081F5765A9004DECB8 /* AppState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7014E3001F576560004DECB8 /* 3D */ = {
+			isa = PBXGroup;
+			children = (
+				7014E3061F576586004DECB8 /* Plane.swift */,
+				7014E3121F576800004DECB8 /* NodeCategory.swift */,
+			);
+			path = 3D;
+			sourceTree = "<group>";
+		};
+		B3EF2438ED31E32D48317B1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */,
+				C1E465B82125E380005ADC56 /* AVFoundation.framework */,
+				C1E465B32125D367005ADC56 /* Spring.framework */,
+				C1E465B12125D362005ADC56 /* SwiftyJSON.framework */,
+				C1E465AF2125D333005ADC56 /* DCAnimationKit.framework */,
+				67869EEB9DAE24B70B57A30C /* Pods_AR_Graffiti.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7014E2E41F5763D0004DECB8 /* AR-Graffiti */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7014E2F91F5763D0004DECB8 /* Build configuration list for PBXNativeTarget "AR-Graffiti" */;
+			buildPhases = (
+				2D703EA70D3A6BAA7E8F0850 /* [CP] Check Pods Manifest.lock */,
+				7014E2E11F5763D0004DECB8 /* Sources */,
+				7014E2E21F5763D0004DECB8 /* Frameworks */,
+				7014E2E31F5763D0004DECB8 /* Resources */,
+				66A01C9A63882E2206A44694 /* [CP] Embed Pods Frameworks */,
+				9EEFEB23981EDB02CC4DD438 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AR-Graffiti";
+			productName = "AR-Graffiti";
+			productReference = 7014E2E51F5763D0004DECB8 /* AR-Graffiti.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7014E2DD1F5763CF004DECB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Silicon.dk ApS";
+				TargetAttributes = {
+					7014E2E41F5763D0004DECB8 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7014E2E01F5763CF004DECB8 /* Build configuration list for PBXProject "AR-Graffiti" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7014E2DC1F5763CF004DECB8;
+			productRefGroup = 7014E2E61F5763D0004DECB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7014E2E41F5763D0004DECB8 /* AR-Graffiti */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7014E2E31F5763D0004DECB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7014E2EB1F5763D0004DECB8 /* art.scnassets in Resources */,
+				C1A6691521270EFC007214D1 /* shakeit.mp3 in Resources */,
+				7014E2F51F5763D0004DECB8 /* LaunchScreen.storyboard in Resources */,
+				C136CBDB2118DB43000102D6 /* smoke.png in Resources */,
+				C12AF9B7212103AA00C97E4F /* style.json in Resources */,
+				C1DAE1EE21208F2A00B30CE3 /* Street Writers.ttf in Resources */,
+				C136CBD92118DB24000102D6 /* Spray.scnp in Resources */,
+				7014E2F21F5763D0004DECB8 /* Assets.xcassets in Resources */,
+				7014E2F01F5763D0004DECB8 /* Main.storyboard in Resources */,
+				C11A6D6F21263388005A959D /* spraySound.mp3 in Resources */,
+				C1DAE1EC21208F2400B30CE3 /* Font (el&font bubble).ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D703EA70D3A6BAA7E8F0850 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AR-Graffiti-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66A01C9A63882E2206A44694 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DCAnimationKit/DCAnimationKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCAnimationKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EEFEB23981EDB02CC4DD438 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7014E2E11F5763D0004DECB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1DAE1F021208F4700B30CE3 /* Font (el&font bubble).ttf in Sources */,
+				C1DAE1EF21208F3D00B30CE3 /* Street Writers.ttf in Sources */,
+				7014E2FE1F57644C004DECB8 /* BrushFactory.swift in Sources */,
+				7014E3101F576668004DECB8 /* AppState.swift in Sources */,
+				7014E30F1F576665004DECB8 /* Plane.swift in Sources */,
+				7014E2ED1F5763D0004DECB8 /* ViewController.swift in Sources */,
+				C16B1BCD21232E52000AD933 /* CollectionViewCell.swift in Sources */,
+				7014E3131F576800004DECB8 /* NodeCategory.swift in Sources */,
+				7014E2E91F5763D0004DECB8 /* AppDelegate.swift in Sources */,
+				7014E30A1F5765D0004DECB8 /* Extension.swift in Sources */,
+				C126282B2120B4F400FD11F8 /* MapController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7014E2EE1F5763D0004DECB8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7014E2EF1F5763D0004DECB8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7014E2F31F5763D0004DECB8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7014E2F41F5763D0004DECB8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7014E2F71F5763D0004DECB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7014E2F81F5763D0004DECB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7014E2FA1F5763D0004DECB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 157FF6C15816C0165214D353 /* Pods-AR-Graffiti.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59X4F89J64;
+				INFOPLIST_FILE = "AR-Graffiti/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yoga.AR-Graffiti";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7014E2FB1F5763D0004DECB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4477117459DEE61E1AC27EC /* Pods-AR-Graffiti.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59X4F89J64;
+				INFOPLIST_FILE = "AR-Graffiti/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "yoga.AR-Graffiti";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7014E2E01F5763CF004DECB8 /* Build configuration list for PBXProject "AR-Graffiti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7014E2F71F5763D0004DECB8 /* Debug */,
+				7014E2F81F5763D0004DECB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7014E2F91F5763D0004DECB8 /* Build configuration list for PBXNativeTarget "AR-Graffiti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7014E2FA1F5763D0004DECB8 /* Debug */,
+				7014E2FB1F5763D0004DECB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7014E2DD1F5763CF004DECB8 /* Project object */;
+}

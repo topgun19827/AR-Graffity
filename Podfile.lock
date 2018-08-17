@@ -1,0 +1,51 @@
+PODS:
+  - DCAnimationKit (0.0.6)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlacePicker (2.7.0):
+    - GoogleMaps (= 2.7.0)
+    - GooglePlaces (= 2.7.0)
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - Spring (1.0.5)
+  - SwiftyJSON (4.1.0)
+
+DEPENDENCIES:
+  - DCAnimationKit
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
+  - Spring (from `https://github.com/MengTo/Spring.git`)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DCAnimationKit
+    - GoogleMaps
+    - GooglePlacePicker
+    - GooglePlaces
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: c540239f3590bbaf4a35c3959c329dd5ed4e3eee
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  DCAnimationKit: 7133bef877ce1aa113dcfeea1380ca67f91f7608
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  Spring: 3c7666eccefdeb87140008dc81043f89f8dbb787
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+
+PODFILE CHECKSUM: b776ca8a75a8e6e0a88ea9a039b35fc086d75710
+
+COCOAPODS: 1.5.3

@@ -12,7 +12,7 @@ import SpriteKit
 import ARKit
 import UIKit
 
-let WALL_TEXT_SIZE_MULP:CGFloat = 500
+let WALL_TEXT_SIZE_MULP:CGFloat = 1500
 class Plane: SCNNode {
     
     var anchor: ARPlaneAnchor!

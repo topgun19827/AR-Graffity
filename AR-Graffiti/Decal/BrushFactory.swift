@@ -11,7 +11,12 @@ import SpriteKit
 
 class BrushFactory {
     static let shared = BrushFactory()
-    let textures:[SKTexture]
+    let threepass:[SKTexture]
+    let death:[SKTexture]
+    let cat:[SKTexture]
+    let twice:[SKTexture]
+    let brainbox:[SKTexture]
+    let taglist: [[SKTexture]]
     static let BASE_SIZE = CGSize(width: 0.1,
                                   height: 0.1)
     static let MIN_DISTANCE_SCALE:CGFloat = 0.2
@@ -20,7 +25,12 @@ class BrushFactory {
     static let MAX_SCALE:CGFloat = 1.0
     
     init() {
-        textures = (1...5).map({ SKTexture(imageNamed: "art.scnassets/s/brush\($0).png") })
+        death = (0...104).map({ SKTexture(imageNamed: "art.scnassets/death/frame_\($0)_delay-0.06s.png") })
+        threepass = (0...20).map({ SKTexture(imageNamed: "art.scnassets/threepass/frame_\($0)_delay-0.03s.png") })
+        cat = (0...160).map({ SKTexture(imageNamed: "art.scnassets/cat/frame_\($0)_delay-0.03s.png") })
+        twice = (0...58).map({ SKTexture(imageNamed: "art.scnassets/twice/frame_\($0)_delay-0.03s.png") })
+        brainbox = (0...117).map({ SKTexture(imageNamed: "art.scnassets/brainbox/frame_\($0)_delay-0.04s.png") })
+        taglist = [death,threepass,cat,twice,brainbox,death,death]
     }
     
     static func brushSizeForDistance(distance: CGFloat) -> CGSize {
@@ -74,6 +84,14 @@ class BrushFactory {
         // for this the black in the brush images needs to be white.. :D
         node.colorBlendFactor = 1
         node.color = color
+        return node
+    }
+    
+    func gifNode(size:CGSize, number: Int) -> SKSpriteNode{
+        var tags = [#imageLiteral(resourceName: "t1"),#imageLiteral(resourceName: "t2"),#imageLiteral(resourceName: "t3"),#imageLiteral(resourceName: "t4"),#imageLiteral(resourceName: "t5"),#imageLiteral(resourceName: "t1"),#imageLiteral(resourceName: "t1")]
+        let testture = SKTexture(image: tags[number])
+        let node = SKSpriteNode(texture: testture,
+                                size: size)
         return node
     }
     

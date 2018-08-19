@@ -13,6 +13,7 @@ import SwiftyJSON
 import DCAnimationKit
 import AVFoundation
 import AudioToolbox
+import SpriteKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -29,9 +30,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     var wallitems = ["0","1","2","3","4","5","6"]
     var wallcolors = [#imageLiteral(resourceName: "1w"),#imageLiteral(resourceName: "2w"),#imageLiteral(resourceName: "3w"),#imageLiteral(resourceName: "4w"),#imageLiteral(resourceName: "5w"),#imageLiteral(resourceName: "6w"),#imageLiteral(resourceName: "7w")]
     var spraycolors = [#imageLiteral(resourceName: "s1"),#imageLiteral(resourceName: "s2"),#imageLiteral(resourceName: "s3"),#imageLiteral(resourceName: "s4"),#imageLiteral(resourceName: "s5"),#imageLiteral(resourceName: "s6"),#imageLiteral(resourceName: "s7")]
+    var tags = [#imageLiteral(resourceName: "death"),#imageLiteral(resourceName: "starwars"),#imageLiteral(resourceName: "cat"),#imageLiteral(resourceName: "twice"),#imageLiteral(resourceName: "brainbox"),#imageLiteral(resourceName: "death"),#imageLiteral(resourceName: "death")]
     var icons = [#imageLiteral(resourceName: "1w"),#imageLiteral(resourceName: "2w"),#imageLiteral(resourceName: "3w"),#imageLiteral(resourceName: "4w"),#imageLiteral(resourceName: "5w"),#imageLiteral(resourceName: "6w"),#imageLiteral(resourceName: "7w")]
     var sprayNumber : Int = 2
     var colorNumber : Int = 1
+    var tagNumber : Int = 0
     var wallupdated : Bool = true
     var isspray : Bool = false
     var touchbegan : Bool = false
@@ -45,8 +48,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     var green : UIColor = UIColor(red:0.49, green:0.59, blue:0.36, alpha:1.00)
     var blue : UIColor = UIColor(red:0.26, green:0.59, blue:0.58, alpha:1.00)
     var red : UIColor = UIColor(red:0.98, green:0.28, blue:0.29, alpha:1.00)
-    
-
     
     var walls = [(wallNode:SCNNode, wallStartPosition:SCNVector3, wallEndPosition:SCNVector3, wallId:String)]()
     
@@ -81,10 +82,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         subtable.delegate = self
         subtable.dataSource = self
         statusColor.layer.cornerRadius = 2
-        
-        
-        
     }
+        
+        
     
     func present(state:ARCamera.TrackingState) {
         var message : String
@@ -158,6 +158,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
             icons = spraycolors
             subtable.reloadData()
         }
+        if pressButton == 2{
+            icons = tags
+            subtable.reloadData()
+        }
         if lastButtonName == selectedButtonName{
             index = 1
         }else{
@@ -204,6 +208,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         if pressButton == 1{
             sprayNumber = indexPath.item
         }
+        if pressButton == 2{
+            tagNumber = indexPath.item
+        }
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {self.subtable.center.y += 50}, completion: nil)
         
         lastButtonName = "none"
@@ -224,14 +231,93 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
                 anchor)
     }
     
-    
+    func createGIFAnimation(url:URL) -> CAKeyframeAnimation?{
+        
+        guard let src = CGImageSourceCreateWithURL(url as CFURL, nil) else { return nil }
+        let frameCount = CGImageSourceGetCount(src)
+        
+        // Total loop time
+        var time : Float = 0
+        
+        // Arrays
+        var framesArray = [AnyObject]()
+        var tempTimesArray = [NSNumber]()
+        
+        // Loop
+        for i in 0..<frameCount {
+            
+            // Frame default duration
+            var frameDuration : Float = 0.1;
+            
+            let cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(src, i, nil)
+            guard let framePrpoerties = cfFrameProperties as? [String:AnyObject] else {return nil}
+            guard let gifProperties = framePrpoerties[kCGImagePropertyGIFDictionary as String] as? [String:AnyObject]
+                else { return nil }
+            
+            // Use kCGImagePropertyGIFUnclampedDelayTime or kCGImagePropertyGIFDelayTime
+            if let delayTimeUnclampedProp = gifProperties[kCGImagePropertyGIFUnclampedDelayTime as String] as? NSNumber {
+                frameDuration = delayTimeUnclampedProp.floatValue
+            }
+            else{
+                if let delayTimeProp = gifProperties[kCGImagePropertyGIFDelayTime as String] as? NSNumber {
+                    frameDuration = delayTimeProp.floatValue
+                }
+            }
+            
+            // Make sure its not too small
+            if frameDuration < 0.011 {
+                frameDuration = 0.100;
+            }
+            
+            // Add frame to array of frames
+            if let frame = CGImageSourceCreateImageAtIndex(src, i, nil) {
+                tempTimesArray.append(NSNumber(value: frameDuration))
+                framesArray.append(frame)
+            }
+            
+            // Compile total loop time
+            time = time + frameDuration
+        }
+        
+        var timesArray = [NSNumber]()
+        var base : Float = 0
+        for duration in tempTimesArray {
+            timesArray.append(NSNumber(value: base))
+            base += ( duration.floatValue / time )
+        }
+        
+        // From documentation of 'CAKeyframeAnimation':
+        // the first value in the array must be 0.0 and the last value must be 1.0.
+        // The array should have one more entry than appears in the values array.
+        // For example, if there are two values, there should be three key times.
+        timesArray.append(NSNumber(value: 1.0))
+        
+        // Create animation
+        let animation = CAKeyframeAnimation(keyPath: "contents")
+        
+        animation.beginTime = AVCoreAnimationBeginTimeAtZero
+        animation.duration = CFTimeInterval(time)
+        animation.repeatCount = Float.greatestFiniteMagnitude;
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+        animation.values = framesArray
+        animation.keyTimes = timesArray
+        //animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.calculationMode = kCAAnimationDiscrete
+        
+        return animation;
+    }
 
     var lastPaint = Date()
     private func paint() {
         isspray = true
         var colorboard : [UIColor] = [clear,black,white,orange,green,blue,red]
+        var frame: TimeInterval = 1.0
         let now = Date()
-        guard lastPaint + 1.0/100.0 < now,
+        if pressButton == 1{
+            frame = 1.0/100.0
+        }
+        guard lastPaint + frame < now,
               let trackingTouch = trackingTouch,
               let povPosition = sceneView.pointOfView?.position else { return }
         lastPaint = now
@@ -259,7 +345,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         // coordinate system of the skscene.. also who knows, may not work in all cases :D
         let skPosition = CGPoint(x: CGFloat(localCoordinates.x) * WALL_TEXT_SIZE_MULP + scene.size.width * 0.5,
                                  y: -CGFloat(localCoordinates.y) * WALL_TEXT_SIZE_MULP + scene.size.height * 0.5)
-
+        if pressButton == 2{
+            let scnSize = BrushFactory.brushSizeForDistance(distance: CGFloat(distance))
+            let skSize = CGSize(width: scnSize.width * WALL_TEXT_SIZE_MULP*6,
+                                height: scnSize.height * WALL_TEXT_SIZE_MULP*6)
+            let gifNode = BrushFactory.shared.gifNode(size: skSize,number: tagNumber)
+            gifNode.position = skPosition
+            gifNode.name = "gif\(tagNumber)"
+            scene.addChild(gifNode)
+            var time : [Double] = [0.06,0.03,0.03,0.03,0.04,0.06,0.06]
+            scene.childNode(withName: "gif\(tagNumber)")?.run(SKAction.repeatForever(SKAction.animate(with: BrushFactory.shared.taglist[tagNumber], timePerFrame: time[tagNumber])))
+        }
+        
+        if pressButton == 1{
         let scnSize = BrushFactory.brushSizeForDistance(distance: CGFloat(distance))
 
         let skSize = CGSize(width: scnSize.width * WALL_TEXT_SIZE_MULP,
@@ -269,20 +367,20 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         let decalNode = BrushFactory.shared.brushNode(color: color,
                                                       size: skSize)
 
-
+        //add spary annimation
         guard let currentFrame = self.sceneView.session.currentFrame else {
             return
         }
         var translation = matrix_identity_float4x4
         translation.columns.3.z = -0.2
 
-        //add spary annimation
+        
         if distance < 0.5 {
-            self.sceneView.scene.rootNode.enumerateChildNodes({(node, _) in
-                if node.name == "pointer"{
-                    node.removeFromParentNode()
-                }
-            })
+//            self.sceneView.scene.rootNode.enumerateChildNodes({(node, _) in
+//                if node.name == "pointer"{
+//                    node.removeFromParentNode()
+//                }
+//            })
             let sprayNode = SCNNode()
             sprayNode.name = "pointer"
             sprayNode.simdTransform = matrix_multiply(currentFrame.camera.transform, translation)
@@ -293,11 +391,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
             sprayNode.addParticleSystem(spray!)
             self.sceneView.scene.rootNode.addChildNode(sprayNode)
         }
-
         decalNode.position = skPosition
         scene.addChild(decalNode)
+        }
     }
 
+    
+    
 //    drawing lines that can't change linewith realtime
 //    func grattifi(){
 //        isspray = true

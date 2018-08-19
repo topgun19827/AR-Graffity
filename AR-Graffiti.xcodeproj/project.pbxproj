@@ -16,7 +16,6 @@
 		7014E2FE1F57644C004DECB8 /* BrushFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E2FD1F57644C004DECB8 /* BrushFactory.swift */; };
 		7014E30A1F5765D0004DECB8 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3091F5765D0004DECB8 /* Extension.swift */; };
 		7014E30F1F576665004DECB8 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3061F576586004DECB8 /* Plane.swift */; };
-		7014E3101F576668004DECB8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3081F5765A9004DECB8 /* AppState.swift */; };
 		7014E3131F576800004DECB8 /* NodeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014E3121F576800004DECB8 /* NodeCategory.swift */; };
 		C11A6D6F21263388005A959D /* spraySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C11A6D6E21263387005A959D /* spraySound.mp3 */; };
 		C126282B2120B4F400FD11F8 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C126282A2120B4F400FD11F8 /* MapController.swift */; };
@@ -34,6 +33,8 @@
 		C1DAE1EE21208F2A00B30CE3 /* Street Writers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */; };
 		C1DAE1EF21208F3D00B30CE3 /* Street Writers.ttf in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */; };
 		C1DAE1F021208F4700B30CE3 /* Font (el&font bubble).ttf in Sources */ = {isa = PBXBuildFile; fileRef = C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */; };
+		C1DC0BF421287657002503E7 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DC0BF321287657002503E7 /* Gif.swift */; };
+		C1DC0BF621287686002503E7 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = C1DC0BF521287686002503E7 /* giphy.gif */; };
 		C1E465B92125E381005ADC56 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465B82125E380005ADC56 /* AVFoundation.framework */; };
 		C1E465BD21261EE6005ADC56 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
@@ -50,7 +51,6 @@
 		7014E2F61F5763D0004DECB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7014E2FD1F57644C004DECB8 /* BrushFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushFactory.swift; sourceTree = "<group>"; };
 		7014E3061F576586004DECB8 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
-		7014E3081F5765A9004DECB8 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		7014E3091F5765D0004DECB8 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7014E3121F576800004DECB8 /* NodeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCategory.swift; sourceTree = "<group>"; };
 		C11A6D6E21263387005A959D /* spraySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = spraySound.mp3; path = "../../../Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/spraySound.mp3"; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		C1A6693A21274FFA007214D1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DAE1EB21208F2300B30CE3 /* Font (el&font bubble).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font (el&font bubble).ttf"; sourceTree = "<group>"; };
 		C1DAE1ED21208F2A00B30CE3 /* Street Writers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Street Writers.ttf"; sourceTree = "<group>"; };
+		C1DC0BF321287657002503E7 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
+		C1DC0BF521287686002503E7 /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		C1E465B82125E380005ADC56 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C1E465BC21261EE6005ADC56 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C4477117459DEE61E1AC27EC /* Pods-AR-Graffiti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Graffiti.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Graffiti/Pods-AR-Graffiti.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,10 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				7014E3091F5765D0004DECB8 /* Extension.swift */,
+				C1DC0BF321287657002503E7 /* Gif.swift */,
 				7014E3001F576560004DECB8 /* 3D */,
-				7014E2FF1F57655B004DECB8 /* Model */,
 				7014E2FC1F576440004DECB8 /* Decal */,
 				7014E2E81F5763D0004DECB8 /* AppDelegate.swift */,
+				C1DC0BF521287686002503E7 /* giphy.gif */,
 				7014E2EA1F5763D0004DECB8 /* art.scnassets */,
 				7014E2EC1F5763D0004DECB8 /* ViewController.swift */,
 				C16B1BCC21232E52000AD933 /* CollectionViewCell.swift */,
@@ -150,14 +153,6 @@
 				7014E2FD1F57644C004DECB8 /* BrushFactory.swift */,
 			);
 			path = Decal;
-			sourceTree = "<group>";
-		};
-		7014E2FF1F57655B004DECB8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7014E3081F5765A9004DECB8 /* AppState.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7014E3001F576560004DECB8 /* 3D */ = {
@@ -246,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7014E2EB1F5763D0004DECB8 /* art.scnassets in Resources */,
+				C1DC0BF621287686002503E7 /* giphy.gif in Resources */,
 				C1A6691521270EFC007214D1 /* shakeit.mp3 in Resources */,
 				7014E2F51F5763D0004DECB8 /* LaunchScreen.storyboard in Resources */,
 				C136CBDB2118DB43000102D6 /* smoke.png in Resources */,
@@ -334,8 +330,8 @@
 				C1DAE1F021208F4700B30CE3 /* Font (el&font bubble).ttf in Sources */,
 				C1DAE1EF21208F3D00B30CE3 /* Street Writers.ttf in Sources */,
 				7014E2FE1F57644C004DECB8 /* BrushFactory.swift in Sources */,
-				7014E3101F576668004DECB8 /* AppState.swift in Sources */,
 				7014E30F1F576665004DECB8 /* Plane.swift in Sources */,
+				C1DC0BF421287657002503E7 /* Gif.swift in Sources */,
 				7014E2ED1F5763D0004DECB8 /* ViewController.swift in Sources */,
 				C16B1BCD21232E52000AD933 /* CollectionViewCell.swift in Sources */,
 				7014E3131F576800004DECB8 /* NodeCategory.swift in Sources */,

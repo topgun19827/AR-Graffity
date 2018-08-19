@@ -53,6 +53,7 @@ class Plane: SCNNode {
         // SceneKit 里的平面默认是垂直的，所以需要旋转90度来匹配 ARKit 中的平面
         planeNode.transform = SCNMatrix4MakeRotation(Float(.pi / 2.0), 1.0, 0.0, 0.0)
         planeNode.geometry?.firstMaterial = mat
+        planeNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         addChildNode(planeNode)
         
         

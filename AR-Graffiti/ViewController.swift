@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 import ARKit
-import SwiftyJSON
+//import SwiftyJSON
 import DCAnimationKit
 import AVFoundation
 import AudioToolbox
@@ -18,10 +18,11 @@ import SpriteKit
 class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var planes = [UUID:Plane]() // 字典，存储场景中当前渲染的所有平面
+    var photo = UIImage()
 //    var points : [CGPoint] = [CGPoint]()
     var selectedButtonName : String = ""
     var pressButton : Int = 0
-    let buttonArrray = ["wall", "spray", "tag", "camera", "delete"]
+    let buttonArrray = ["wall", "spray", "tag", "camera", "delete", "snapshot"]
     var lastButtonName : String = "none"
     var currentStateDisplayed:String? = nil
 //    var lineNumber : Int = 0
@@ -31,7 +32,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     var wallcolors = [#imageLiteral(resourceName: "1w"),#imageLiteral(resourceName: "2w"),#imageLiteral(resourceName: "3w"),#imageLiteral(resourceName: "4w"),#imageLiteral(resourceName: "5w"),#imageLiteral(resourceName: "6w"),#imageLiteral(resourceName: "7w")]
     var spraycolors = [#imageLiteral(resourceName: "s1"),#imageLiteral(resourceName: "s2"),#imageLiteral(resourceName: "s3"),#imageLiteral(resourceName: "s4"),#imageLiteral(resourceName: "s5"),#imageLiteral(resourceName: "s6"),#imageLiteral(resourceName: "s7")]
     var tags = [#imageLiteral(resourceName: "death"),#imageLiteral(resourceName: "starwars"),#imageLiteral(resourceName: "cat"),#imageLiteral(resourceName: "twice"),#imageLiteral(resourceName: "brainbox"),#imageLiteral(resourceName: "death"),#imageLiteral(resourceName: "death")]
-    var icons = [#imageLiteral(resourceName: "1w"),#imageLiteral(resourceName: "2w"),#imageLiteral(resourceName: "3w"),#imageLiteral(resourceName: "4w"),#imageLiteral(resourceName: "5w"),#imageLiteral(resourceName: "6w"),#imageLiteral(resourceName: "7w")]
+    var blank = [#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem")]
+    var icons = [#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem"),#imageLiteral(resourceName: "blankitem")]
     var sprayNumber : Int = 2
     var colorNumber : Int = 1
     var tagNumber : Int = 0
@@ -58,6 +60,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     @IBOutlet weak var tag: UIButton!
     @IBOutlet weak var camera: UIButton!
     @IBOutlet weak var delete: UIButton!
+    @IBOutlet weak var snapshot: UIButton!
     @IBOutlet weak var subtable: UICollectionView!
     @IBOutlet weak var bar: UIStackView!
     @IBOutlet weak var statusColor: UIView!
@@ -71,6 +74,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         sceneView.delegate = self
         
         let scene = SCNScene()
+        scene.physicsWorld.gravity = SCNVector3Zero
         sceneView.scene = scene
         
         sceneView.overlaySKScene = SKScene(size: view.frame.size)
@@ -141,6 +145,36 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         sceneView.overlaySKScene?.size = view.frame.size
     }
     
+    @IBAction func snapshot(_ sender: UIButton){
+        
+        photo = sceneView.snapshot()
+        UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil)
+        
+        let alertController = UIAlertController(
+        title: "Add to World", message: "Would you like to share your Grattifi", preferredStyle: .alert)
+        alertController.addImage(image: photo)
+        
+        alertController.addAction(UIAlertAction(title: "Decline", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Accept", style: .default, handler: nil))
+        self.present(alertController, animated : true, completion: nil)
+//        guard let currentFrame = sceneView.session.currentFrame else { return }
+//        let plane = SCNPlane(width: photo.size.width/1000, height: photo.size.width/1000)
+//        plane.firstMaterial?.diffuse.contents = photo
+//        plane.firstMaterial?.lightingModel = .constant
+//        let planeNode = SCNNode(geometry: plane)
+//        var translation = matrix_identity_float4x4
+//        translation.columns.3.z = -0.2
+//        let transform = matrix_multiply(currentFrame.camera.transform, translation)
+//        planeNode.name = "photo"
+//        planeNode.geometry?.firstMaterial?.isDoubleSided = true
+//        planeNode.simdTransform = transform
+//        planeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+//        let forceVector = SCNVector3(planeNode.worldFront.x*1 ,planeNode.worldFront.y*1.2 ,planeNode.worldFront.z*1.5)
+//        planeNode.physicsBody?.applyForce(forceVector, asImpulse: true)
+//        sceneView.scene.rootNode.addChildNode(planeNode)
+        
+    }
+    
     @IBAction func barPresseed(_ sender: UIButton){
         selectedButtonName = buttonArrray[sender.tag]
         print(selectedButtonName)
@@ -162,6 +196,11 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
             icons = tags
             subtable.reloadData()
         }
+        if pressButton == 3{
+            icons = blank
+            subtable.reloadData()
+        }
+        
         if lastButtonName == selectedButtonName{
             index = 1
         }else{
@@ -174,12 +213,21 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         
         switch index {
         case 0:
-            
+            if pressButton == 3{
+                snapshot.isHidden = false
+            }else{
+                snapshot.isHidden = true
+            }
             UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.subtable.center.y -= 50}, completion: nil)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y -= 50}, completion: nil)
             sender.bounce(nil)
             lastButtonName = selectedButtonName
+            
         case 1:
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {self.subtable.center.y += 50}, completion: nil)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y += 50}, completion: nil)
             
             lastButtonName = "none"
         case 2:

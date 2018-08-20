@@ -181,6 +181,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         pressButton = sender.tag
         
         if pressButton == 0{
+            snapshot.isHidden = true
             wallupdated = true
             icons = wallcolors
             subtable.reloadData()
@@ -189,14 +190,17 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         }
         
         if pressButton == 1{
+            snapshot.isHidden = true
             icons = spraycolors
             subtable.reloadData()
         }
         if pressButton == 2{
+            snapshot.isHidden = true
             icons = tags
             subtable.reloadData()
         }
         if pressButton == 3{
+            snapshot.isHidden = false
             icons = blank
             subtable.reloadData()
         }
@@ -213,14 +217,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         
         switch index {
         case 0:
-            if pressButton == 3{
-                snapshot.isHidden = false
-            }else{
-                snapshot.isHidden = true
-            }
-            UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.subtable.center.y -= 50}, completion: nil)
+            UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {self.subtable.center.y -= 50}, completion: nil)
             
-            UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y -= 50}, completion: nil)
+            UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y -= 50}, completion: nil)
             sender.bounce(nil)
             lastButtonName = selectedButtonName
             

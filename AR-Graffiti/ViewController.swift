@@ -40,6 +40,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
     var wallupdated : Bool = true
     var isspray : Bool = false
     var touchbegan : Bool = false
+    var screenturned : Bool = false
     var spraySound : AVAudioPlayer!
     var shakeit : AVAudioPlayer!
     
@@ -86,9 +87,44 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         subtable.delegate = self
         subtable.dataSource = self
         statusColor.layer.cornerRadius = 2
+        
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        //添加通知，监听设备方向改变
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedRotation),
+                                               name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
     }
         
-        
+    @objc func receivedRotation(){
+        lastButtonName = "none"
+        let device = UIDevice.current
+        switch device.orientation{
+        case .portrait:
+//            面向设备保持垂直，Home键位于下部
+            screenturned = false
+        case .portraitUpsideDown:
+//            面向设备保持垂直，Home键位于上部
+            screenturned = false
+        case .landscapeLeft:
+//            "面向设备保持水平，Home键位于左侧"
+            screenturned = true
+        case .landscapeRight:
+//            "面向设备保持水平，Home键位于右侧"
+            screenturned = true
+        case .faceUp:
+//            "设备平放，Home键朝上"
+            screenturned = false
+        case .faceDown:
+//            "设备平放，Home键朝下"
+            screenturned = false
+        case .unknown:
+//            "方向未知"
+            screenturned = false
+//        default:
+////           "方向未知"
+//            screenturned = false
+        }
+    }
     
     func present(state:ARCamera.TrackingState) {
         var message : String
@@ -217,16 +253,29 @@ class ViewController: UIViewController, ARSCNViewDelegate, UICollectionViewDataS
         
         switch index {
         case 0:
+            if screenturned == false{
             UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {self.subtable.center.y -= 50}, completion: nil)
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y -= 50}, completion: nil)
+            }else{
+                UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {self.subtable.center.x -= 50}, completion: nil)
+                
+                UIView.animate(withDuration: 0.3, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.x -= 50}, completion: nil)
+            }
+            
             sender.bounce(nil)
             lastButtonName = selectedButtonName
             
         case 1:
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {self.subtable.center.y += 50}, completion: nil)
-            
-            UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y += 50}, completion: nil)
+            if screenturned == false{
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {self.subtable.center.y += 50}, completion: nil)
+                
+                UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.y += 50}, completion: nil)
+            }else{
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {self.subtable.center.x += 50}, completion: nil)
+                
+                UIView.animate(withDuration: 0.5, delay: 0, options: .layoutSubviews, animations: {self.snapshot.center.x += 50}, completion: nil)
+            }
             
             lastButtonName = "none"
         case 2:
